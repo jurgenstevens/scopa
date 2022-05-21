@@ -31,11 +31,13 @@ let opponentScore = {
 let turnEl = document.querySelector("#turn")
 let playerScoreEl = document.querySelector("#playerScore")
 let opponentScoreEl = document.querySelector("#opponentScore")
+let messageEl = document.querySelector("#message")
 let opponentHandEl = document.querySelector("#opponentHand")
 let tableCardsEl = document.querySelector("#tableCards")
 let dealerDeckEl = document.querySelector("#")
 let playerHandEl = document.querySelector("#playerHand")
 let startBtnEl = document.querySelector("#startBtn")
+let resetBtnEl = document.querySelector("#resetBtn")
 
 // Event Listeners
 
