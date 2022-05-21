@@ -28,6 +28,14 @@ let opponentScore = {
 
 // Cached Elements
 // S3: Set up your cached elements to connect your JS to your HTML to get some functionality going.
+let turnEl = document.querySelector("#turn")
+let playerScoreEl = document.querySelector("#playerScore")
+let opponentScoreEl = document.querySelector("#opponentScore")
+let opponentHandEl = document.querySelector("#opponentHand")
+let tableCardsEl = document.querySelector("#tableCards")
+let dealerDeckEl = document.querySelector("#")
+let playerHandEl = document.querySelector("#playerHand")
+let startBtnEl = document.querySelector("#startBtn")
 
 // Event Listeners
 
