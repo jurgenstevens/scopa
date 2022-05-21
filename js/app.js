@@ -1,12 +1,11 @@
 console.log("Sanity check!")
-// Constants
-
-
 // Variables
 // S1: Define variables used to keep the state of the game
 let turn
 let playerHand = []
 let opponentHand = []
+let playerCardsCollected = []
+let opponentCardsCollected = []
 let dealerDeck = []
 let tableCards = []
 let playerScore = {
@@ -23,7 +22,6 @@ let opponentScore = {
     sevenOfCoins: 0,
     scopa: 0
 }
-
 // S2: Next set up your HTML elements in the index.html file to include your cached elements
 
 // Cached Elements
@@ -47,7 +45,13 @@ let resetBtnEl = document.querySelector("#resetBtn")
 // S4 Set up event listeners
 startBtnEl.addEventListener("click", () => {
     // S4.1 Start off with console logging to make sure they work.
-    console.log("This starts the game")
+    // console.log("This starts the game")
+    // S4.3 Then call the init function to initialize the game. 
+    init()
 })
 
 // Functionality
+// S4.2 Create the init function to initialize the game.
+function init(){
+    console.log("Testing from the init() function!")
+}
