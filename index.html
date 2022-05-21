@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <script async defer src="/js/app.js"></script>
     <title>Scopa</title>
 </head>
 <body>
+    <!-- S2: Set up your divs in a container and to their corresponding classes to add css later and go back to app.js Cached Elements for step 3 -->
     <h1>Scopa</h1>
+    <div class="container">
+        <h5 id="turn"></h5>
+        <div class="scores">
+            <div id="playerScore"></div>
+            <div id="opponentScore"></div>
+        </div>
+        <div class="table">
+            <div id="opponentHand">Opponent Hand</div>
+            <div id="tableCards">Table Cards</div>
+            <div id="dealerDeck">Dealer Deck</div>
+            <div id="playerHand">Player Hand</div>
+        </div>
+        <div class="buttons">
+            <button id="startBtn">Start</button>
+        </div>
+    </div>
 </body>
 </html>

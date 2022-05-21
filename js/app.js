@@ -24,9 +24,10 @@ let opponentScore = {
     scopa: 0
 }
 
+// S2: Next set up your HTML elements in the index.html file to include your cached elements
 
 // Cached Elements
-
+// S3: Set up your cached elements to connect your JS to your HTML to get some functionality going.
 
 // Event Listeners
 
