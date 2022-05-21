@@ -39,6 +39,11 @@ let playerHandEl = document.querySelector("#playerHand")
 let startBtnEl = document.querySelector("#startBtn")
 let resetBtnEl = document.querySelector("#resetBtn")
 
+
+// DID YE BRING DE CAIRDS
+// let cards = [clubsAce1, clubs2, clubs3, clubs4, clubs5, clubs6, clubs7, clubsFante8, clubsCavallo9, clubsRe10, coinsAce1, coins2, coins3, coins4, coins5, coins6, coins7, coins8, coinsFante8, coinsCavallo9, coinsRe10, cupsAce1, cups2, cups3, cups4, cups5, cups6, cups7, cupsFante8, cupsCavalo9, cupsRe10, spadesAce1, spades2, spades3, spades4, spade5, spades6, spades7, spadesFante8, spadesCavallo9, spadesRe10]
+
+
 // Event Listeners
 
 
