@@ -2,12 +2,14 @@ console.log("Sanity check!")
 // Variables
 // S1: Define variables used to keep the state of the game
 let turn
+let round
 let playerHand = []
 let opponentHand = []
 let playerCardsCollected = []
 let opponentCardsCollected = []
 let dealerDeck = []
 let tableCards = []
+let isWinner = null
 let playerScore = {
     cards: 0,
     goldenCards: 0,
@@ -26,7 +28,7 @@ let opponentScore = {
 
 // Cached Elements
 // S3: Set up your cached elements to connect your JS to your HTML to get some functionality going.
-let turnEl = document.querySelector("#turn")
+// let turnEl = document.querySelector("#turn")
 let playerScoreEl = document.querySelector("#playerScore")
 let opponentScoreEl = document.querySelector("#opponentScore")
 let messageEl = document.querySelector("#message")
@@ -37,21 +39,25 @@ let playerHandEl = document.querySelector("#playerHand")
 let startBtnEl = document.querySelector("#startBtn")
 let resetBtnEl = document.querySelector("#resetBtn")
 
-
-// DID YE BRING DE CAIRDS
-// let cards = [clubsAce1, clubs2, clubs3, clubs4, clubs5, clubs6, clubs7, clubsFante8, clubsCavallo9, clubsRe10, coinsAce1, coins2, coins3, coins4, coins5, coins6, coins7, coins8, coinsFante8, coinsCavallo9, coinsRe10, cupsAce1, cups2, cups3, cups4, cups5, cups6, cups7, cupsFante8, cupsCavalo9, cupsRe10, spadesAce1, spades2, spades3, spades4, spade5, spades6, spades7, spadesFante8, spadesCavallo9, spadesRe10]
-
 // Event Listeners
 // S4 Set up event listeners
-startBtnEl.addEventListener("click", () => {
+startBtnEl.addEventListener("click", init
     // S4.1 Start off with console logging to make sure they work.
     // console.log("This starts the game")
     // S4.3 Then call the init function to initialize the game. 
-    init()
-})
+)
 
 // Functionality
 // S4.2 Create the init function to initialize the game.
 function init(){
     console.log("Testing from the init() function!")
+    // S5: When initializing the game we want to...
+    // S5.1 Set round count to 0
+
+    // S5.2 Render a message to the page on the game starting and whose turn it is
+    // S5.3 Push the cards to the dealer's card deck
+    dealerDeck = ["clubsAce1", "clubs2", "clubs3", "clubs4", "clubs5", "clubs6", "clubs7", "clubsFante8", "clubsCavallo9", "clubsRe10", "coinsAce1", "coins2", "coins3", "coins4", "coins5", "coins6", "coins7", "coins8", "coinsFante8", "coinsCavallo9", "coinsRe10", "cupsAce1", "cups2", "cups3", "cups4", "cups5", "cups6", "cups7", "cupsFante8", "cupsCavalo9", "cupsRe10", "spadesAce1", "spades2", "spades3", "spades4", "spade5", "spades6", "spades7", "spadesFante8", "spadesCavallo9", "spadesRe10"]
+    console.log("This is dealer deck after click: ", dealerDeck)
+    // S5.4 Call function to give player cards
+    // S5.5 Call function to give opponent cards
 }
