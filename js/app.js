@@ -53,7 +53,8 @@ function init(){
     console.log("Testing from the init() function!")
     // S5: When initializing the game we want to...
     // S5.1 Set round count to 0
-
+    round = 0
+    console.log("This is round after click: ", round)
     // S5.2 Render a message to the page on the game starting and whose turn it is
     // S5.3 Push the cards to the dealer's card deck
     dealerDeck = ["clubsAce1", "clubs2", "clubs3", "clubs4", "clubs5", "clubs6", "clubs7", "clubsFante8", "clubsCavallo9", "clubsRe10", "coinsAce1", "coins2", "coins3", "coins4", "coins5", "coins6", "coins7", "coins8", "coinsFante8", "coinsCavallo9", "coinsRe10", "cupsAce1", "cups2", "cups3", "cups4", "cups5", "cups6", "cups7", "cupsFante8", "cupsCavalo9", "cupsRe10", "spadesAce1", "spades2", "spades3", "spades4", "spade5", "spades6", "spades7", "spadesFante8", "spadesCavallo9", "spadesRe10"]
