@@ -24,5 +24,6 @@ init()
 function init(){
     deck = new Deck()
     deck.reset()
+    deck.shuffle()
     console.log(deck)
 }

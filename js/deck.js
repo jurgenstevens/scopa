@@ -1,4 +1,4 @@
-// S1 - Set up the deck class with a deck as 
+// S1 - Set up the deck class with an emptry deck as the the only property.
 // Inspired by Ian's Hanafuda Deck class. Thank you Ian!
 class Deck {
     constructor(){
@@ -21,7 +21,19 @@ class Deck {
         }
     }
 
-    shuffle(){}
+    // Referencing Ian's and the Fisher-Yates (Knuth) Shuffle algorithms
+    shuffle(){
+        const { deck } = this;
+        let currentIndex = deck.length, randomIndex;
+      
+        while (currentIndex) {
+          randomIndex = Math.floor(Math.random() * currentIndex--);
+      
+          [deck[currentIndex], deck[randomIndex]] = [deck[randomIndex], deck[currentIndex]];
+        }
+      
+        return this;
+    }
     dealField(){}
     dealPlayer(){}
     dealComputer(){}
