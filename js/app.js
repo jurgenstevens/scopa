@@ -2,7 +2,7 @@ console.log("Sanity check!")
 import Deck from "./deck.js"
 
 /*-------------------------------- Constants --------------------------------*/
-
+let deck
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -19,3 +19,10 @@ import Deck from "./deck.js"
 
 /*-------------------------------- Functions --------------------------------*/
 
+init()
+
+function init(){
+    deck = new Deck()
+    deck.reset()
+    console.log(deck)
+}
