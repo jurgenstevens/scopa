@@ -36,20 +36,33 @@ let computer = {
 
 
 /*------------------------ Cached Element References ------------------------*/
+let startBtnEl = document.getElementById("startBtn")
 
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+startBtnEl.addEventListener("click", init)
 
 
 /*-------------------------------- Functions --------------------------------*/
 
-init()
-// S4 - Create a new deck and shuffle it by initializing the game
+
+// S4 - Create a new deck and shuffle it by initializing the game and setting the turn and round to 1
 function init(){
+    turn = 1
+    round = 1
+    winner = null
     deck = new Deck()
     deck.reset()
     deck.shuffle()
-    console.log(deck)
+    console.log("Deck before deal: ", deck)
+    field = deck.dealField()
+    player.hand = deck.dealPlayer()
+    computer.hand = deck.dealComputer()
+    console.log("Deck before deal: ", deck)
+    console.log("Field cards: ", field)
+    console.log("Player's Hand: ", player.hand)
+    console.log("Computer's Hand: ", computer.hand)
 }
+
+// S7: Create functions to render player, computer and field hands ref Ian's function on lines 488 - 512
