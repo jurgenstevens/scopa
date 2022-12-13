@@ -89,7 +89,7 @@ function renderFieldCards(){
         fieldCard.textContent = `${card}`
         fieldEl.appendChild(fieldCard)
         // Eventually create a function for the computer to match cards on its own.
-        console.log(fieldCard)
+        
     })
 }
 // S9: Render the three (upside down later) opponent cards
@@ -118,7 +118,9 @@ function renderPlayerCards(){
 
 // S11: Create a function to match cards upon being clicked to push to field
 function putUserCardDown(event){
-    console.log(event.target.id)
+    let cardSelected = event.target
+    fieldEl.appendChild(cardSelected)
+    console.log(fieldEl)
 }
 
 
