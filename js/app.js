@@ -38,6 +38,7 @@ let computer = {
 
 
 /*------------------------ Cached Element References ------------------------*/
+let buttonsEl = document.querySelector(".buttons")
 let startBtnEl = document.querySelector(".startBtn")
 let roundEl = document.querySelector(".round")
 let dealerDeckEl = document.querySelector(".dealerDeck")
@@ -66,8 +67,7 @@ function init(){
     field = deck.dealField()
     player.hand = deck.dealPlayer()
     computer.hand = deck.dealComputer()
-    // S7a: create a ul to store cards in field
-    const fieldCardsUl = document.createElement('ul')
+    startBtnEl.style.visibility = 'hidden'
     render()
 }
 
@@ -116,12 +116,14 @@ function renderPlayerCards(){
     })
 }
 
-// S11: Create a function to match cards upon being clicked to push to field
+// S11: Create a function to push user cards to field
 function putUserCardDown(event){
     let cardSelected = event.target
     fieldEl.appendChild(cardSelected)
     console.log(fieldEl)
 }
+
+// S12: Stub up function that will match cards upon being clicked and call in putUserCardDown function above.
 
 
 
