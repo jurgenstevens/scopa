@@ -1,4 +1,3 @@
-console.log("Sanity check!")
 import Deck from "./deck.js"
 
 /*-------------------------------- Constants --------------------------------*/
@@ -39,12 +38,16 @@ let computer = {
 
 
 /*------------------------ Cached Element References ------------------------*/
-let startBtnEl = document.getElementById("startBtn")
-let roundEl = document.getElementById("round")
-let fieldCardsEl = document.getElementById("fieldCards")
-let fieldEl = document.querySelector(".field")
-let dealerDeckEl = document.getElementById("dealerDeck")
-let playerHandEl = document.getElementById("playerHand")
+let startBtnEl = document.querySelector(".startBtn")
+let roundEl = document.querySelector(".round")
+let dealerDeckEl = document.querySelector(".dealerDeck")
+let fieldCardsDiv = document.querySelector(".field")
+let computerCardsDiv = document.querySelector(".computer")
+let playerDiv = document.querySelector(".player")
+
+let fieldEl = document.querySelector(".fieldCards")
+let playerHandEl = document.querySelector(".playerHand")
+let computerHandEl = document.querySelector(".computerHand")
 
 /*----------------------------- Event Listeners -----------------------------*/
 startBtnEl.addEventListener("click", init)
@@ -73,6 +76,7 @@ function render(){
     roundEl.innerText = `Round: ${round}`
     dealerDeckEl.innerText = `${deck.deck.length} cards left`
     renderFieldCards()
+    renderComputerCards()
 }
 
 // S8a: Create a function to render the four field cards
@@ -80,10 +84,23 @@ function renderFieldCards(){
     fieldEl.innerHTML = ""
     field.forEach((card) => {
         let fieldCard = document.createElement('div')
-        fieldCard.className = 'field-card'
+        fieldCard.className = card
         fieldCard.textContent = `${card}`
         fieldEl.appendChild(fieldCard)
+        console.log(fieldCard)
     })
 }
 // S9: Render the three (upside down) opponent cards
+function renderComputerCards(){
+    computerHandEl.innerHTML = ""
+    computer.hand.forEach((card) => {
+        let computerCard = document.createElement('div')
+        computerCard.className = card
+        computerCard.id = card.replace(/\s/g, '')
+        computerCard.textContent = `${card}`
+        computerHandEl.appendChild(computerCard)
+        console.log(computerCard)
+    })
+}
 // S10: Render the three player cards
+// S11: Create a function to match cards upon being clicked to push to field
