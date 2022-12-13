@@ -88,8 +88,8 @@ function renderFieldCards(){
         fieldCard.className = card
         fieldCard.textContent = `${card}`
         fieldEl.appendChild(fieldCard)
-        fieldCard.addEventListener('click', putCardDown)
-
+        // Eventually create a function for the computer to match cards on its own.
+        console.log(fieldCard)
     })
 }
 // S9: Render the three (upside down later) opponent cards
@@ -101,7 +101,6 @@ function renderComputerCards(){
         computerCard.id = card.replace(/\s/g, '')
         computerCard.textContent = `${card}`
         computerHandEl.appendChild(computerCard)
-        computerCard.addEventListener('click', putCardDown)
     })
 }
 // S10: Render the three player cards
@@ -113,12 +112,12 @@ function renderPlayerCards(){
         playerCard.id = card.replace(/\s/g, '')
         playerCard.textContent = `${card}`
         playerHandEl.appendChild(playerCard)
-        playerCard.addEventListener('click', putCardDown)
+        playerCard.addEventListener('click', putUserCardDown)
     })
 }
 
 // S11: Create a function to match cards upon being clicked to push to field
-function putCardDown(event){
+function putUserCardDown(event){
     console.log(event.target.id)
 }
 
