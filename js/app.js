@@ -77,6 +77,7 @@ function render(){
     dealerDeckEl.innerText = `${deck.deck.length} cards left`
     renderFieldCards()
     renderComputerCards()
+    renderPlayerCards()
 }
 
 // S8a: Create a function to render the four field cards
@@ -87,10 +88,11 @@ function renderFieldCards(){
         fieldCard.className = card
         fieldCard.textContent = `${card}`
         fieldEl.appendChild(fieldCard)
-        console.log(fieldCard)
+        fieldCard.addEventListener('click', putCardDown)
+
     })
 }
-// S9: Render the three (upside down) opponent cards
+// S9: Render the three (upside down later) opponent cards
 function renderComputerCards(){
     computerHandEl.innerHTML = ""
     computer.hand.forEach((card) => {
@@ -99,8 +101,28 @@ function renderComputerCards(){
         computerCard.id = card.replace(/\s/g, '')
         computerCard.textContent = `${card}`
         computerHandEl.appendChild(computerCard)
-        console.log(computerCard)
+        computerCard.addEventListener('click', putCardDown)
     })
 }
 // S10: Render the three player cards
+function renderPlayerCards(){
+    playerHandEl.innerHTML = ""
+    player.hand.forEach((card) => {
+        let playerCard = document.createElement('div')
+        playerCard.className = card
+        playerCard.id = card.replace(/\s/g, '')
+        playerCard.textContent = `${card}`
+        playerHandEl.appendChild(playerCard)
+        playerCard.addEventListener('click', putCardDown)
+    })
+}
+
 // S11: Create a function to match cards upon being clicked to push to field
+function putCardDown(event){
+    console.log(event.target.id)
+}
+
+
+
+
+
