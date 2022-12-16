@@ -121,7 +121,8 @@ function renderPlayerCards(){
 function putUserCardDown(event){
     // S11a: Target the card and then append it to the field array
     let cardSelected = event.target
-    // fieldEl.appendChild(cardSelected) // move this to player sum compared.
+    let cardSelectedId = event.target.id
+    player.selectedCard = cardSelectedId
     // S11b:
     playerCardSumOrCompared(cardSelected)
 }
@@ -129,12 +130,32 @@ function putUserCardDown(event){
 function playerCardSumOrCompared(cardSelected){
     // S12a: Compare last card in the field array (card you set) with the rest of the cards by looping
     let cardSelectedValue = Math.floor(cardSelected.id.slice(-1))
-    console.log("This is the field card array: ", fieldEl)
-
-    console.log("Cards compared!")
-    console.log("It's the computer's turn now.")
+    playerCompareCards(cardSelected, cardSelectedValue)
 }
 
+function playerCompareCards(cardSelected, cardSelectedValue){
+    console.log("This was the card selected: ", cardSelected)
+    let sameValCardOrCards = field.filter(card => card.charAt(card.length-1) == cardSelectedValue)
+    if(sameValCardOrCards.length){
+        moveMatchingCards(cardSelected)
+    } else {
+        console.log("No matches. It's the computer's turn.")
+    }
+}
 
-
-
+// Create a function to handle moving matching cards to player's collected array
+function moveMatchingCards(cardSelected){
+    player.hand.forEach((card, idx) => {
+        if(card == player.selectedCard){
+            player.collectedCards.push(player.hand.at(idx))
+            // write code for player hand to match playerHandEl
+            console.log("Player cards: ", player.hand)
+            player.hand.splice(idx, 1)
+            // write code for fieldEl to match field array
+            console.log("Field cards: ", field)
+            fieldEl.appendChild(cardSelected)
+            console.log("These are the player's cards collected: ", player.collectedCards)
+            // write a setInterval to append both cards to cards collected array.
+        } 
+    })
+}
