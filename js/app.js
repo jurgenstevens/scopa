@@ -39,6 +39,7 @@ let computer = {
 
 /*------------------------ Cached Element References ------------------------*/
 let buttonsEl = document.querySelector(".buttons")
+let turnEl = document.querySelector(".turn")
 let startBtnEl = document.querySelector(".startBtn")
 let roundEl = document.querySelector(".round")
 let dealerDeckEl = document.querySelector(".dealerDeck")
@@ -59,6 +60,7 @@ startBtnEl.addEventListener("click", init)
 // S7 - Create a new deck and shuffle it by initializing the game and setting the turn and round to 1
 function init(){
     turn = 1
+    turnEl.innerText = `${turn}`
     round = 1
     winner = null
     deck = new Deck()
@@ -115,16 +117,20 @@ function renderPlayerCards(){
         playerCard.addEventListener('click', putUserCardDown)
     })
 }
-
 // S11: Create a function to push user cards to field
 function putUserCardDown(event){
     let cardSelected = event.target
     fieldEl.appendChild(cardSelected)
     console.log(fieldEl)
+    playerCardSumOrCompared(cardSelected)
 }
-
 // S12: Stub up function that will match cards upon being clicked and call in putUserCardDown function above.
-
+function playerCardSumOrCompared(cardSelected){
+    // S12a: Compare last card in the field array (card you set) with the rest of the cards by looping
+    console.log("This is the card selected: ", cardSelected)
+    console.log("Cards compared!")
+    console.log("It's the computer's turn now.")
+}
 
 
 
