@@ -21,7 +21,7 @@ let player = {
 
 // S4b: Set up the computer with its necessary properties
 let computer = {
-    playerName: "Player",
+    playerName: "Computer",
     hand: [],
     selectedCard: null,
     selectedCardIdx: null,
@@ -119,15 +119,18 @@ function renderPlayerCards(){
 }
 // S11: Create a function to push user cards to field
 function putUserCardDown(event){
+    // S11a: Target the card and then append it to the field array
     let cardSelected = event.target
-    fieldEl.appendChild(cardSelected)
-    console.log(fieldEl)
+    // fieldEl.appendChild(cardSelected) // move this to player sum compared.
+    // S11b:
     playerCardSumOrCompared(cardSelected)
 }
 // S12: Stub up function that will match cards upon being clicked and call in putUserCardDown function above.
 function playerCardSumOrCompared(cardSelected){
     // S12a: Compare last card in the field array (card you set) with the rest of the cards by looping
-    console.log("This is the card selected: ", cardSelected)
+    let cardSelectedValue = Math.floor(cardSelected.id.slice(-1))
+    console.log("This is the field card array: ", fieldEl)
+
     console.log("Cards compared!")
     console.log("It's the computer's turn now.")
 }
