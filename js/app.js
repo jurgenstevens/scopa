@@ -141,29 +141,26 @@ function playerCompareCards(cardSelected, cardSelectedValue){
     let sameValCardOrCards = field.filter(card => card.charAt(card.length-1) == cardSelectedValue)
     // console.log(sameValCardOrCards)
     if(sameValCardOrCards.length){
-        moveMatchingCards(cardSelected, sameValCardOrCards)
+        moveMatchingCardsToCollection(cardSelected, sameValCardOrCards)
     } else {
         console.log("No matches. It's the computer's turn.")
     }
 }
 
 // Create a function to handle moving matching cards to player's collected array
-function moveMatchingCards(cardSelected, sameValCardOrCards){
+function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
+    // write code for player hand to match playerHandEl
     player.hand.forEach((card, idx) => {
         if(card == player.selectedCard){
             player.collectedCards.push(player.hand.at(idx))
-            console.log(idx)
-            // player.collectedCards.push(card)
-            // write code for player hand to match playerHandEl
-            console.log("Player cards: ", player.hand)
-            let cardMatched = player.hand.splice(idx, 1)
-            console.log(cardMatched)
-            // write code for fieldEl to match field array
-            console.log("Field cards: ", field)
-            fieldEl.appendChild(cardSelected)
-            console.log("These are the player's cards collected: ", player.collectedCards)
-            // write a setInterval to append both cards to cards collected array.
+            player.hand.splice(idx, 1)
         } 
     })
+    // write code for fieldEl to match field array
+    console.log("Field cards: ", field)
+    fieldEl.appendChild(cardSelected)
+    console.log("These are the player's cards collected: ", player.collectedCards)
+    // write a setInterval to append both cards to cards collected array.
+    console.log("Card(s) with same value as card selected", sameValCardOrCards)
 }
 
