@@ -41,6 +41,7 @@ let computer = {
 let buttonsEl = document.querySelector(".buttons")
 let turnEl = document.querySelector(".turn")
 let startBtnEl = document.querySelector(".startBtn")
+let resetBtnEl = document.querySelector(".resetBtn")
 let roundEl = document.querySelector(".round")
 let dealerDeckEl = document.querySelector(".dealerDeck")
 let fieldCardsDiv = document.querySelector(".field")
@@ -55,7 +56,7 @@ let computerHandEl = document.querySelector(".computerHand")
 startBtnEl.addEventListener("click", init)
 
 /*-------------------------------- Functions --------------------------------*/
-
+// resetBtnEl.style.visibility = "hidden"
 
 // S7 - Create a new deck and shuffle it by initializing the game and setting the turn and round to 1
 function init(){
@@ -69,7 +70,9 @@ function init(){
     field = deck.dealField()
     player.hand = deck.dealPlayer()
     computer.hand = deck.dealComputer()
-    startBtnEl.style.visibility = 'hidden'
+    startBtnEl.style.visibility = "hidden"
+    resetBtnEl.style.visibility = "visible"
+    resetBtnEl.addEventListener("click", init)
     render()
 }
 
@@ -132,25 +135,29 @@ function playerCardSumOrCompared(cardSelected){
     let cardSelectedValue = Math.floor(cardSelected.id.slice(-1))
     playerCompareCards(cardSelected, cardSelectedValue)
 }
-
+// Create a function to compare the cards once player selects a card
 function playerCompareCards(cardSelected, cardSelectedValue){
     console.log("This was the card selected: ", cardSelected)
     let sameValCardOrCards = field.filter(card => card.charAt(card.length-1) == cardSelectedValue)
+    // console.log(sameValCardOrCards)
     if(sameValCardOrCards.length){
-        moveMatchingCards(cardSelected)
+        moveMatchingCards(cardSelected, sameValCardOrCards)
     } else {
         console.log("No matches. It's the computer's turn.")
     }
 }
 
 // Create a function to handle moving matching cards to player's collected array
-function moveMatchingCards(cardSelected){
+function moveMatchingCards(cardSelected, sameValCardOrCards){
     player.hand.forEach((card, idx) => {
         if(card == player.selectedCard){
             player.collectedCards.push(player.hand.at(idx))
+            console.log(idx)
+            // player.collectedCards.push(card)
             // write code for player hand to match playerHandEl
             console.log("Player cards: ", player.hand)
-            player.hand.splice(idx, 1)
+            let cardMatched = player.hand.splice(idx, 1)
+            console.log(cardMatched)
             // write code for fieldEl to match field array
             console.log("Field cards: ", field)
             fieldEl.appendChild(cardSelected)
@@ -159,3 +166,4 @@ function moveMatchingCards(cardSelected){
         } 
     })
 }
+
