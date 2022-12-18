@@ -158,9 +158,11 @@ function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
     })
     // write code for fieldEl to match field array
     console.log("Field cards: ", field)
-    fieldEl.appendChild(cardSelected)
     console.log("These are the player's cards collected: ", player.collectedCards)
-    // write a setInterval to append both cards to cards collected array.
+    fieldEl.appendChild(cardSelected)
     console.log("Card(s) with same value as card selected", sameValCardOrCards)
+    // write a setInterval to append both cards to cards collected array w animation.
 }
+
+// Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
 
