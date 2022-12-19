@@ -103,7 +103,7 @@ function renderComputerCards(){
     computer.hand.forEach((card) => {
         let computerCard = document.createElement('div')
         computerCard.className = card
-        computerCard.id = card.replace(/\s/g, '')
+        computerCard.id = card
         computerCard.textContent = `${card}`
         computerHandEl.appendChild(computerCard)
     })
@@ -156,12 +156,13 @@ function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
             player.hand.splice(idx, 1)
         } 
     })
-    // write code for fieldEl to match field array
-    console.log("Field cards: ", field)
-    console.log("These are the player's cards collected: ", player.collectedCards)
-    fieldEl.appendChild(cardSelected)
-    console.log("Card(s) with same value as card selected", sameValCardOrCards)
-    // write a setInterval to append both cards to cards collected array w animation.
+    // Set condition to remove both cards that matched from the field
+    if(sameValCardOrCards.length == 1){
+        console.log("Just one card matches")
+        document.getElementById(cardSelected.id).remove()
+        document.querySelector(`.${sameValCardOrCards[0]}`).remove()
+        // Throw in a quick message saying those two cards matched
+    }
 }
 
 // Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
