@@ -94,7 +94,6 @@ function renderFieldCards(){
         fieldCard.textContent = `${card}`
         fieldEl.appendChild(fieldCard)
         // Eventually create a function for the computer to match cards on its own.
-        
     })
 }
 // S9: Render the three (upside down later) opponent cards
@@ -139,7 +138,6 @@ function playerCardSumOrCompared(cardSelected){
 function playerCompareCards(cardSelected, cardSelectedValue){
     console.log("This was the card selected: ", cardSelected)
     let sameValCardOrCards = field.filter(card => card.charAt(card.length-1) == cardSelectedValue)
-    // console.log(sameValCardOrCards)
     if(sameValCardOrCards.length){
         moveMatchingCardsToCollection(cardSelected, sameValCardOrCards)
     } else {
@@ -149,21 +147,30 @@ function playerCompareCards(cardSelected, cardSelectedValue){
 
 // Create a function to handle moving matching cards to player's collected array
 function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
-    // write code for player hand to match playerHandEl
+    // Write condionts for player hand to match playerHandEl cards
     player.hand.forEach((card, idx) => {
         if(card == player.selectedCard){
             player.collectedCards.push(player.hand.at(idx))
             player.hand.splice(idx, 1)
         } 
     })
-    // Set condition to remove both cards that matched from the field
+    // Set condition to remove both cards that matched from the field.
+    //! Set a timeout on this later
     if(sameValCardOrCards.length == 1){
-        console.log("Just one card matches")
         document.getElementById(cardSelected.id).remove()
         document.querySelector(`.${sameValCardOrCards[0]}`).remove()
         // Throw in a quick message saying those two cards matched
+        console.log("Just one card matches")
+    }
+    // Compare multiple cards
+    if(sameValCardOrCards.length > 1){
+        // Create a for loop to iterate through the array of matching card values
+        // Use the eval() to check if match is true using -> console.log(eval('2 + 2') === eval('4'));
+        // Compare array's current and prev idx
+        console.log("Multiple cards match!")
+        // Throw in the S14 function
     }
 }
 
-// Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
+// S14: Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
 
