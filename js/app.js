@@ -155,12 +155,12 @@ function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
         } 
     })
     // Set condition to remove both cards that matched from the field.
-    //! Set a timeout on this later
     if(sameValCardOrCards.length == 1){
+        console.log("Just one card matches")
+        //! Create a setTimeout on this later
         document.getElementById(cardSelected.id).remove()
         document.querySelector(`.${sameValCardOrCards[0]}`).remove()
         // Throw in a quick message saying those two cards matched
-        console.log("Just one card matches")
     }
     // Compare multiple cards
     if(sameValCardOrCards.length > 1){
@@ -173,4 +173,7 @@ function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
 }
 
 // S14: Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
+    // Function will take the parameters of cardSelected and sameValCardOrCards
+    // Create an element accessing the compare card section to render multiple cards with event handlers
+    // Create
 
