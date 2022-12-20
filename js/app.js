@@ -51,6 +51,7 @@ let playerDiv = document.querySelector(".player")
 let fieldEl = document.querySelector(".fieldCards")
 let playerHandEl = document.querySelector(".playerHand")
 let computerHandEl = document.querySelector(".computerHand")
+let sameValCardsEl = document.querySelector(".sameValueCards")
 
 /*----------------------------- Event Listeners -----------------------------*/
 startBtnEl.addEventListener("click", init)
@@ -91,6 +92,7 @@ function renderFieldCards(){
     field.forEach((card) => {
         let fieldCard = document.createElement('div')
         fieldCard.className = card
+        fieldCard.id = card
         fieldCard.textContent = `${card}`
         fieldEl.appendChild(fieldCard)
         // Eventually create a function for the computer to match cards on its own.
@@ -113,7 +115,7 @@ function renderPlayerCards(){
     player.hand.forEach((card) => {
         let playerCard = document.createElement('div')
         playerCard.className = card
-        playerCard.id = card.replace(/\s/g, '')
+        playerCard.id = card
         playerCard.textContent = `${card}`
         playerHandEl.appendChild(playerCard)
         playerCard.addEventListener('click', putUserCardDown)
@@ -131,7 +133,7 @@ function putUserCardDown(event){
 // S12: Stub up function that will match cards upon being clicked and call in putUserCardDown function above.
 function playerCardSumOrCompared(cardSelected){
     // S12a: Compare last card in the field array (card you set) with the rest of the cards by looping
-    let cardSelectedValue = Math.floor(cardSelected.id.slice(-1))
+    let cardSelectedValue = Math.floor(cardSelected.id.slice(-2))
     playerCompareCards(cardSelected, cardSelectedValue)
 }
 // Create a function to compare the cards once player selects a card
@@ -139,14 +141,24 @@ function playerCompareCards(cardSelected, cardSelectedValue){
     console.log("This was the card selected: ", cardSelected)
     let sameValCardOrCards = field.filter(card => card.charAt(card.length-1) == cardSelectedValue)
     if(sameValCardOrCards.length){
-        moveMatchingCardsToCollection(cardSelected, sameValCardOrCards)
+        moveMatchingCardToCollection(cardSelected, sameValCardOrCards)
     } else {
+    // Call S14 function here
+        console.log("No exact matches. Check if they sum up to the placed card's value.")
+            // If the statement above is true, push the cards to the collectedCards arr
+            // Then it's the computer's turn
+            // If false
         console.log("No matches. It's the computer's turn.")
+        let cardSelectedValue = Math.floor(cardSelected.id.slice(-2))
+        let fieldNums = field.map(fieldCard => {
+            return parseInt(fieldCard.slice(-2))
+        })
+        comparePossibleSumCards(cardSelectedValue, fieldNums)
     }
 }
 
 // Create a function to handle moving matching cards to player's collected array
-function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
+function moveMatchingCardToCollection(cardSelected, sameValCardOrCards){
     // Write condionts for player hand to match playerHandEl cards
     player.hand.forEach((card, idx) => {
         if(card == player.selectedCard){
@@ -160,20 +172,33 @@ function moveMatchingCardsToCollection(cardSelected, sameValCardOrCards){
         //! Create a setTimeout on this later
         document.getElementById(cardSelected.id).remove()
         document.querySelector(`.${sameValCardOrCards[0]}`).remove()
-        // Throw in a quick message saying those two cards matched
-    }
-    // Compare multiple cards
-    if(sameValCardOrCards.length > 1){
-        // Create a for loop to iterate through the array of matching card values
-        // Use the eval() to check if match is true using -> console.log(eval('2 + 2') === eval('4'));
-        // Compare array's current and prev idx
-        console.log("Multiple cards match!")
-        // Throw in the S14 function
+        // Render a quick message saying those two cards matched
     }
 }
+// S14: Create an function to compare field cards for value of selected card. Ref: https://javascript.plainenglish.io/determining-if-an-array-of-numbers-can-sum-to-a-specified-target-21466c139124
+// Call this function on line 146
+function comparePossibleSumCards(cardSelectedValue, fieldNums){
+    console.log(cardSelectedValue)
+    console.log(fieldNums)
+    // Base cases
+    if(cardSelectedValue === 0){
+        console.log(true)
+        return true
+    }
+    if(cardSelectedValue < 0){
+        console.log(false)
+        return false
+    }
 
-// S14: Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
+    for(const fieldNum of fieldNums){
+        // Now we need to subtract number from cardSelectedValue and 
+        // then do this same process over AKA recurse.
+        if (comparePossibleSumCards(cardSelectedValue - fieldNum, fieldNums)) return true;
+    }
+    return false
+}
+
+    // S15: Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
     // Function will take the parameters of cardSelected and sameValCardOrCards
-    // Create an element accessing the compare card section to render multiple cards with event handlers
-    // Create
+    // Create the cards in the sameValCardsEl using same method as render
 

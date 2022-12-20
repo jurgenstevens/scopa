@@ -8,8 +8,8 @@ class Deck {
     reset(){
         this.deck = []
         const suits = ['clubs', 'spades', 'coins', 'cups']
-        const suitsValues = ['1', '2', '3', '4', '5', '6', '7']
-        const royaltyValues = ['Fante8', 'Cavallo9', 'Re10']
+        const suitsValues = ['01', '02', '03', '04', '05', '06', '07']
+        const royaltyValues = ['Fante08', 'Cavallo09', 'Re10']
 
         for (let suit in suits){
             for (let suitValue in suitsValues){
