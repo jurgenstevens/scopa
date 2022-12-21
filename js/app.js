@@ -142,11 +142,7 @@ function playerCompareCards(cardSelected, cardSelectedValue){
     let sameValCardOrCards = field.filter(card => card.charAt(card.length-1) == cardSelectedValue)
     if(sameValCardOrCards.length){
         moveMatchingCardToCollection(cardSelected, sameValCardOrCards)
-    }
-    if(sameValCardOrCards.length > 2){
-        comparePossibleSumCards(cardSelectedValue, fieldNums)
-    }
-    else {
+    } else {
     // Call S14 function here
         console.log("No exact matches. Check if they sum up to the placed card's value.")
             // If the statement above is true, push the cards to the collectedCards arr
@@ -157,6 +153,7 @@ function playerCompareCards(cardSelected, cardSelectedValue){
         let fieldNums = field.map(fieldCard => {
             return parseInt(fieldCard.slice(-2))
         })
+        comparePossibleSumCards(fieldNums, cardSelectedValue)
     }
 }
 
@@ -181,48 +178,32 @@ function moveMatchingCardToCollection(cardSelected, sameValCardOrCards){
 // S14: Create an function to compare field cards for value of selected card. Ref: https://javascript.plainenglish.io/determining-if-an-array-of-numbers-can-sum-to-a-specified-target-21466c139124
 // Call this function on line 146
 function comparePossibleSumCards(fieldNums, cardSelectedValue){
-    for (let i =0; i < fieldNums.length; i++){
+    console.log(fieldNums)
+    console.log(cardSelectedValue)
+    let summedCardsIdxs
+    for(let i = 0; i < fieldNums.length; i++){
         for(let j = i + 1; j < fieldNums.length; j++){
-            if (fieldNums[i] + fieldNums[j] === cardSelectedValue) {
-                console.log('Two matches have been made!')
-                return [i, j]
+            if(fieldNums[i] + fieldNums[j] === cardSelectedValue){
+                summedCards = [i, j]
             }
         }
     }
+    console.log(summedCardsIdxs)
 }
 
     // S15: Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
     // Function will take the parameters of cardSelected and sameValCardOrCards
     // Create the cards in the sameValCardsEl using same method as render
-
-// // https://leetcode.com/problems/two-sum/
-
-// function twoSum(numbers, target) {
-//   for (let i = 0; i < numbers.length; i++) {
-//     for (let j = i + 1; j < numbers.length; j++) {
-//       if (numbers[i] + numbers[j] === target) return [i, j]
-//     }
-//   }
-// }
-
-// console.log(
-//   twoSum([3, 3], 6), //[0,1]
-//   twoSum([3, 2, 4], 6), //[1,2]
-//   twoSum([2, 7, 11, 15], 9), //[0,1]
-// )
-
-// // Time complexity: O(n^2). 
-// // For each element, we try to find its complement by looping through the rest of 
-// // the array which takes O(n)O(n) time. Therefore, the time complexity is O(n^2)
-
-
-
-// // Refactor to a Two-pass Hash Table
-
-// // A simple implementation uses two iterations. 
-// // In the first iteration, we add each element's value as a key and 
-// // its index as a value to the hash table. Then, in the second iteration, 
-// // we check if each element's complement (target - nums[i]target−nums[i]) 
-// // exists in the hash table. If it does exist, we return current element's
-// // index and its complement's index.
-// // Beware that the complement must not be nums[i]nums[i] itself!
+    // function twoSum(numbers, target) {
+    //     for (let i = 0; i < numbers.length; i++) {
+    //       for (let j = i + 1; j < numbers.length; j++) {
+    //         if (numbers[i] + numbers[j] === target) return [i, j]
+    //       }
+    //     }
+    //   }
+      
+    //   console.log(
+    //     twoSum([3, 3], 6), //[0,1]
+    //     twoSum([3, 2, 4], 6), //[1,2]
+    //     twoSum([2, 7, 11, 15], 9), //[0,1]
+    //   )
