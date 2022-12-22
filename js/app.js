@@ -184,26 +184,13 @@ function comparePossibleSumCards(fieldNums, cardSelectedValue){
     for(let i = 0; i < fieldNums.length; i++){
         for(let j = i + 1; j < fieldNums.length; j++){
             if(fieldNums[i] + fieldNums[j] === cardSelectedValue){
-                summedCards = [i, j]
+                summedCardsIdxs = [i, j]
+            }
+            if(fieldNums[i] + fieldNums[j] !== cardSelectedValue){
+                continue
             }
         }
     }
     console.log(summedCardsIdxs)
 }
 
-    // S15: Create a function to render a modal for a user to choose which of the cards with the same value they want to pick and put this function in the function above
-    // Function will take the parameters of cardSelected and sameValCardOrCards
-    // Create the cards in the sameValCardsEl using same method as render
-    // function twoSum(numbers, target) {
-    //     for (let i = 0; i < numbers.length; i++) {
-    //       for (let j = i + 1; j < numbers.length; j++) {
-    //         if (numbers[i] + numbers[j] === target) return [i, j]
-    //       }
-    //     }
-    //   }
-      
-    //   console.log(
-    //     twoSum([3, 3], 6), //[0,1]
-    //     twoSum([3, 2, 4], 6), //[1,2]
-    //     twoSum([2, 7, 11, 15], 9), //[0,1]
-    //   )
