@@ -175,22 +175,47 @@ function moveMatchingCardToCollection(cardSelected, sameValCardOrCards){
         // Render a quick message saying those two cards matched
     }
 }
-// S14: Create an function to compare field cards for value of selected card. Ref: https://javascript.plainenglish.io/determining-if-an-array-of-numbers-can-sum-to-a-specified-target-21466c139124
+// S14: Create an function to compare field cards for value of selected card. Ref: 
 // Call this function on line 146
 function comparePossibleSumCards(fieldNums, cardSelectedValue){
     console.log(fieldNums)
     console.log(cardSelectedValue)
     let summedCardsIdxs
-    for(let i = 0; i < fieldNums.length; i++){
+    for(let i = 0; i < fieldNums.length - 1; i++){
         for(let j = i + 1; j < fieldNums.length; j++){
             if(fieldNums[i] + fieldNums[j] === cardSelectedValue){
                 summedCardsIdxs = [i, j]
             }
+            // threeSum(): https://www.tutorialspoint.com/finding-three-elements-with-required-sum-in-an-array-in-javascript
+            // twoSum() and threeSum() https://javascript.plainenglish.io/algorithm-problem-solving-two-sum-and-three-sum-problem-762606f68b65
             if(fieldNums[i] + fieldNums[j] !== cardSelectedValue){
-                continue
+                for(let k = j + 1; k < fieldNums.length; k++){
+                    if(fieldNums[i] + fieldNums[j] + fieldNums[k] === cardSelectedValue){
+                        summedCardsIdxs = [i, j, k]
+                    }
+                }
             }
         }
     }
     console.log(summedCardsIdxs)
 }
 
+
+// function comparePossibleSumCards(fieldNums, cardSelectedValue){
+//     console.log(fieldNums)
+//     console.log(cardSelectedValue)
+//     let summedCardsIdxs
+//     for(let i = 0; i < fieldNums.length; i++){
+//         for(let j = i + 1; j < fieldNums.length; j++){
+//             if(fieldNums[i] + fieldNums[j] === cardSelectedValue){
+//                 summedCardsIdxs = [i, j]
+//             }
+//             // threeSum(): https://www.tutorialspoint.com/finding-three-elements-with-required-sum-in-an-array-in-javascript
+//             // twoSum() and threeSum() https://javascript.plainenglish.io/algorithm-problem-solving-two-sum-and-three-sum-problem-762606f68b65
+//             if(fieldNums[i] + fieldNums[j] !== cardSelectedValue){
+//                 continue
+//             }
+//         }
+//     }
+//     console.log(summedCardsIdxs)
+// }
