@@ -12,7 +12,6 @@ class Deck {
         const royaltyValues = ['Fante08', 'Cavallo09', 'Re10']
 
         for (let suit in suits){
-            console.log(suits)
             for (let suitValue in suitsValues){
                 this.deck.push(`${suits[suit]}${suitsValues[suitValue]}`)
             }
