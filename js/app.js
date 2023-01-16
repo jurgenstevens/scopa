@@ -179,7 +179,7 @@ function moveMatchingCardToCollection(cardSelected, sameValCardOrCards){
 // Call this function on line 146
 // Refered to: threeSum(): https://www.tutorialspoint.com/finding-three-elements-with-required-sum-in-an-array-in-javascript
 // twoSum() and threeSum() https://javascript.plainenglish.io/algorithm-problem-solving-two-sum-and-three-sum-problem-762606f68b65
-// Final solution below, credit goes to chatGPT:
+// Final solution below uses recursion and is passed an empty array to push sum combos, credit goes to chatGPT:
 function comparePossibleSumCards(fieldNums, originalFieldNums, currentIdx, cardSelectedValue, combination, sum){
     if(sum === cardSelectedValue){
         console.log(combination)
