@@ -9,6 +9,7 @@ let deck, field, turn, round, winner
 let player = {
     playerName: "Player",
     hand: [],
+    combinations: [],
     selectedCard: null,
     selectedCardIdx: null,
     collectedCards: [],
@@ -23,6 +24,7 @@ let player = {
 let computer = {
     playerName: "Computer",
     hand: [],
+    combinations: [],
     selectedCard: null,
     selectedCardIdx: null,
     collectedCards: [],
@@ -140,9 +142,15 @@ function playerCardSumOrCompared(cardSelected){
 function playerCompareCards(cardSelected, cardSelectedValue){
     console.log("This was the card selected: ", cardSelected)
     let sameValCardOrCards = field.filter(card => card.charAt(card.length-1) == cardSelectedValue)
+    // If one card matches the card placed, push the cards to the collection array
     if(sameValCardOrCards.length){
         moveMatchingCardToCollection(cardSelected, sameValCardOrCards)
-    } else {
+    } 
+    // If two or more cards match the value of the card placed, render the card options for the player to pick which card will go to their collection
+    if(sameValCardOrCards.length > 1){
+        console.log(sameValCardOrCards)
+    }
+    else {
     // Call S14 function here
         console.log("No exact matches. Check if they sum up to the placed card's value.")
             // If the statement above is true, push the cards to the collectedCards arr
@@ -153,7 +161,7 @@ function playerCompareCards(cardSelected, cardSelectedValue){
         let fieldNums = field.map(fieldCard => {
             return parseInt(fieldCard.slice(-2))
         })
-        comparePossibleSumCards(fieldNums, fieldNums, 0, cardSelectedValue, [], 0)
+        comparePossibleSumCards(fieldNums, fieldNums, 0, cardSelectedValue, player.combinations, 0)
     }
 }
 
@@ -182,7 +190,7 @@ function moveMatchingCardToCollection(cardSelected, sameValCardOrCards){
 // Final solution below uses recursion and is passed an empty array to push sum combos, credit goes to chatGPT:
 function comparePossibleSumCards(fieldNums, originalFieldNums, currentIdx, cardSelectedValue, combination, sum){
     if(sum === cardSelectedValue){
-        console.log(combination)
+        player.combinations.push(combination)
         return
     }
     if(sum > cardSelectedValue){
@@ -195,5 +203,6 @@ function comparePossibleSumCards(fieldNums, originalFieldNums, currentIdx, cardS
         comparePossibleSumCards(fieldNums.slice(i + 1), originalFieldNums, cardIdx + 1, cardSelectedValue, combination, newSum)
         combination.pop()
     }
+    console.log(player.combinations)
 }
 
